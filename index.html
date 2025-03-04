@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Sergio Pereira</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    integrity="sha384-gH6gOWRmoWx2iKw9r+OB8LC9sOiw/lqFIoeCXGaM9D6wUksdCQz8fnwivXkYOf7z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://unpkg.com/mammoth/mammoth.browser.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header">
+        <h1 class="fade-in">Sergio Pereira</h1>
+        <h3 class="fade-in delay">Desarrollador Full Stack | Técnico Informático</h3>
+        <nav>
+            <ul>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+    
+
+    <section class="about" >
+        <span>
+        <h1>Sobre mí</h1>
+        <h3>
+        <p>Soy un <strong>Desarrollador Full Stack Jr</strong> con experiencia en <strong>Java, Python y JavaScript.</strong> <br>Apasionado por la tecnología, 
+        la optimización de procesos y la resolución de problemas. <br>Manejo frameworks como: <strong>Spring Boot, Django y React.js</strong>. 
+        También bases de datos <strong>SQL/MySQL</strong>.<br> Busco crear soluciones eficientes y escalables, combinando lógica y creatividad. Me adapto rápido a nuevos entornos, disfruto trabajar en equipo y aprender de los demás.<br>
+        Además soy <strong>Técnico Informático</strong>, con más de 4 años de experiencia en reparación y soporte de manera independiente.<br>
+        Actualmente me encuento estudiando la carrera Ingeniería Infiormática en la <strong>UNDAV</strong>.</p>
+        </h3>
+        </span>
+    </section>
+
+    <hr>
+    <div id="title-proyect">
+        <h1><img id="pc_pic01" src="img\pc_pic.svg" alt="pc-pic">Proyectos <img id="pc_pic02" src="img\pc_pic.svg" alt="pc-pic"></h1>
+        
+    </div>
+
+    <section id="projects" class="slide-in">
+        
+
+        <div id="logo_html_rg">
+            <img src="img\html_pic.png" alt="logo_html">
+        </div>
+        <div id="logo_html_lf">
+            <img src="img\html_pic.png" alt="logo_html">
+        </div>
+        
+        <div class="project">
+            <h3>CV Filter</h3>
+            <img src="cv_filter_pic.png" alt="Gestor de pedidos" class="project-image">
+            <p>Simulador de filtro ATS</p>
+            <a href="https://tweegio.github.io/CV_Filter/" target="_blank" class="view-project">Ver Proyecto</a>
+        </div>
+        
+        <div id="logo_rt">
+            <img src="img\css_pic.png" alt="logo_css">
+        </div>
+        <div id="logo_lf">
+            <img src="img\css_pic.png" alt="logo_css">
+        </div>
+        
+        <div class="project">
+            <h3>Gestor de pedidos</h3>
+            <img src="generador_de_pedidos.png" alt="Gestor de pedidos" class="project-image">
+            <p>Aplicación web para la gestión de pedidos de bolsas.</p>
+            <a href="https://tweegio.github.io/carga_de_pedidios_TXT/" target="_blank" class="view-project">Ver Proyecto</a>
+        </div>
+
+        <div id="logo_rt">
+            <img src="img\js_pic.png" alt="logo_js">
+        </div>
+        <div id="logo_lf">
+            <img src="img\js_pic.png" alt="logo_js">
+        </div>
+        
+        <div class="project">
+            <h3>Generator QR</h3>
+            <img src="generador_qr.png" alt="Generador de Qr" class="project-image">
+            <p>Generador de QR a partir de imágenes o links</p>
+            <a href="https://tweegio.github.io/QR_generator/" target="_blank" class="view-project">Ver Proyecto</a>
+
+        </div>
+
+        <div id="logo_rt">
+            <img src="img\booststrap_pic.png" alt="logo_boost">
+        </div>
+        <div id="logo_lf">
+            <img src="img\booststrap_pic.png" alt="logo_boost">
+        </div>
+        
+
+        <div class="project">
+            <h3>Cadaver Exquisito</h3>
+            <img src="cadaver_exquisito.png" alt="Cadaver exquisito" class="project-image">
+            <p>Juego para crear textos y despertar la inspiración.</p>
+            <a href="https://tweegio.github.io/CadaverExquisito/" target="_blank" class="view-project">Ver Proyecto</a>
+
+        </div>
+
+        <div id="logo_rt">
+            <img src="img\python_pic.png" alt="logo_python">
+        </div>
+        <div id="logo_lf">
+            <img src="img\python_pic.png" alt="logo_python">
+        </div>
+    
+        
+        <div class="project">
+            <h3>Café Aurora</h3>
+            <img src="cafe_aurora.png" alt="Café Aurara" class="project-image">
+            <p>Maqueta web, cafetería Aurora.</p>
+            <a href="https://tweegio.github.io/cafe_aurora/" target="_blank" class="view-project">Ver Proyecto</a>
+
+        </div>
+    </div>
+
+    <div id="logo_rt">
+        <img src="img\Django_pic.png" alt="logo_django">
+    </div>
+    <div id="logo_lf">
+        <img src="img\Django_pic.png" alt="logo_django">
+    </div>
+
+    <div class="project">
+        <h3>Service Net</h3>
+        <img src="service_net.png" alt="Service Net" class="project-image">
+        <p>Página web, empresa de soluciones tecnológicas.</p>
+        <a href="https://tweegio.github.io/service_net_2/" target="_blank" class="view-project">Ver Proyecto</a>
+
+    </div>
+    </section>
+    
+    <section id="contact" class="slide-in">
+        <h2>Contacto</h2>
+        <p>Encuéntrame en <a href="https://www.linkedin.com/in/sergio-pereira-development/" target="_blank">LinkedIn</a> o visita mi <a href="https://github.com/tweegio" target="_blank">GitHub</a>.</p>
+    </section>
+    <hr id="fin">
+    <footer>
+        &#xa9 Tweegio 2025
+    </footer>
+    
+</body>
+</html>
