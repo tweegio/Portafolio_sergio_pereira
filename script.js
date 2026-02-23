@@ -1,3 +1,4 @@
+//Nueva Dinámica de Portafolio
 document.addEventListener("DOMContentLoaded", () => {
 
     // ---- NAVBAR: efecto scroll ----
