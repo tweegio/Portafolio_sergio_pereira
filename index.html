@@ -4,194 +4,411 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Sergio Pereira</title>
+    <meta name="description" content="Sergio Pereira – Desarrollador Front-End Junior y Técnico Informático. HTML, CSS, JavaScript, React, Python, Flask.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script src="https://unpkg.com/mammoth/mammoth.browser.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <div id="header">
-        <h1 class="fade-in">Sergio Pereira</h1>
-        <h3 class="fade-in delay">Desarrollador Front-end | Técnico Informático</h3>
-        <nav>
-            <ul>
-                <li><a href="#about">Sobre mí</a></li>
+
+    <!-- NAVBAR FIJA -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo">SP<span class="dot">.</span></span>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#educacion">Educación</a></li>
                 <li><a href="#projects">Proyectos</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-        </nav>
-    </div>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#skills">Skills</a>
+            <a href="#educacion">Educación</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-badge fade-in">✦ &nbsp;Disponible para trabajar</p>
+            <h1 class="fade-in delay-1">Sergio Pereira</h1>
+            <h3 class="fade-in delay-2">Desarrollador Front-End &nbsp;·&nbsp; Instructor IT &nbsp;·&nbsp; Técnico Informático</h3>
+            <div class="hero-cta fade-in delay-3">
+                <a href="#projects" class="btn-primary">Ver proyectos</a>
+                <a href="#contact" class="btn-ghost">Contactarme</a>
+            </div>
+        </div>
+        <div class="hero-scroll-hint fade-in delay-3">
+            <span>scroll</span>
+            <div class="scroll-bar"></div>
+        </div>
     </header>
-    
 
-    <section class="about" >
-        <span>
-        <h1>Sobre mí</h1>
-     
-         <p>
-    Soy <strong>Desarrollador Front-End Junior</strong> y <strong>Técnico Informático</strong>, con experiencia en el desarrollo de
-    <strong>interfaces web funcionales, claras y orientadas al usuario</strong>, utilizando
-    <strong>HTML, CSS, JavaScript y React</strong> para crear sitios y aplicaciones web dinámicas.
-  </p>
-
-  <p>
-    He trabajado de manera independiente desarrollando <strong>sitios web, landing pages y aplicaciones web</strong>,
-    integrando formularios, flujos de datos y automatizaciones. Además, utilizo <strong>Python</strong> para la lógica de backend,
-    creación de APIs con <strong>Flask</strong> y desarrollo de herramientas internas para gestión de datos y procesos.
-  </p>
-
-  <p>
-    Me especializo en <strong>transformar necesidades reales en soluciones digitales</strong>, combinando
-    <strong>diseño, lógica y usabilidad</strong>. Tengo experiencia integrando plataformas externas como
-    <strong>WhatsApp, formularios y sistemas de contacto</strong>, y desarrollando interfaces pensadas para usuarios finales.
-  </p>
-
-  <p>
-    También soy <strong>Técnico Informático</strong>, con más de <strong>cuatro años de experiencia</strong> en soporte,
-    reparación y mantenimiento de equipos, tanto de forma presencial como remota, lo que me permite comprender los sistemas
-    desde el hardware hasta el software.
-  </p>
-
-  <p>
-    Actualmente soy <strong>estudiante de Ingeniería Informática en la UNDAV</strong> y continúo formándome de manera constante
-    para fortalecer mis habilidades en desarrollo web y tecnologías modernas.
-  </p>
-
-  <p>
-    Busco integrarme a un equipo donde pueda <strong>crecer como desarrollador front-end</strong>, aportar soluciones reales
-    y seguir evolucionando profesionalmente.
-  </p>
-      
+    <!-- SOBRE MÍ -->
+    <section class="about-section" id="sobre-mi">
+        <div class="section-container">
+            <div class="section-tag reveal">Sobre mí</div>
+            <div class="about-grid">
+                <div class="about-text reveal delay-1">
+                    <h2>Transformo necesidades reales en <span class="accent">soluciones digitales.</span></h2>
+                    <p>Soy <strong>Desarrollador Front-End Junior</strong> y <strong>Técnico Informático</strong>, con experiencia en el desarrollo de interfaces web funcionales, claras y orientadas al usuario, utilizando <strong>HTML, CSS, JavaScript y React</strong>.</p>
+                    <p>He trabajado de manera independiente desarrollando <strong>sitios web, landing pages y aplicaciones web</strong>, integrando formularios, flujos de datos y automatizaciones. Uso <strong>Python y Flask</strong> para lógica de backend y creación de APIs.</p>
+                    <p>Soy <strong>Técnico Informático</strong> con más de <strong>4 años de experiencia</strong> en soporte, reparación y mantenimiento de equipos presencial y remoto.</p>
+                    <p>Busco integrarme a un equipo donde pueda <strong>crecer como desarrollador front-end</strong> y seguir evolucionando profesionalmente.</p>
+                </div>
+                <div class="about-stats reveal delay-2">
+                    <div class="stat-card">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Años de experiencia técnica</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Proyectos desarrollados</span>
+                    </div>
+                    <div class="stat-card accent-card">
+                        <span class="stat-number">UNDAV</span>
+                        <span class="stat-label">Ingeniería Informática</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <hr>
-    <div id="title-proyect">
-        <h1><img id="pc_pic01" src="img\pc_pic.svg" alt="pc-pic">Proyectos <img id="pc_pic02" src="img\pc_pic.svg" alt="pc-pic"></h1>
-        
+    <!-- SKILLS -->
+    <section class="skills-section" id="skills">
+        <div class="section-container">
+            <div class="section-tag reveal">Tecnologías</div>
+            <h2 class="section-title reveal delay-1">Stack &amp; Herramientas</h2>
+            <div class="skills-grid reveal delay-2">
+                <div class="skill-group">
+                    <h4>🖥️ Frontend</h4>
+                    <div class="skill-tags">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Bootstrap</span><span>Figma</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>⚙️ Backend</h4>
+                    <div class="skill-tags">
+                        <span>Python</span><span>C++</span><span>Flask</span><span>Firebase</span><span>Django</span><span>APIs REST</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>🛠️ Herramientas</h4>
+                    <div class="skill-tags">
+                        <span>Git</span><span>GitHub</span><span>Vercel</span><span>VS Code</span><span>Figma</span><span>Jira</span><span>MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>🧪 QA & Testing</h4>
+                    <div class="skill-tags">
+                        <span>QA manual</span><span>Reportede Bugs</span><span>IA Generativa</span>
+                    </div>
+                </div>    
+                <div class="skill-group">
+                    <h4>🔧 Soporte Técnico</h4>
+                    <div class="skill-tags">
+                        <span>Hardware</span><span>Redes</span><span>Soporte Remoto</span><span>Mantenimiento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section class="edu-section" id="educacion">
+        <div class="section-container">
+            <div class="section-tag reveal">Formación</div>
+            <h2 class="section-title reveal delay-1">Educación &amp; Certificaciones</h2>
+            <div class="edu-timeline">
+
+                <div class="edu-item reveal delay-1">
+                    <div class="edu-dot"></div>
+                    <div class="edu-content">
+                        <span class="edu-year">2023 — Presente</span>
+                        <h4>Ingeniería Informática</h4>
+                        <p class="edu-place">Universidad Nacional de Avellaneda (UNDAV)</p>
+                        <p class="edu-desc">Formación en sistemas, algoritmos, redes y desarrollo de software.</p>
+                    </div>
+                </div>
+
+                 <div class="edu-item reveal delay-2">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2025</span>
+                    <h4>Maquetación con Figma</h4>
+                    <p class="edu-place">Codo a Codo</p>
+                    <p class="edu-desc">Diseño de interfaces y prototipos interactivos orientados a desarrollo web.</p>
+                </div>
+            </div>
+
+               <div class="edu-item reveal delay-3">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2025</span>
+                    <h4>QA Manual — Reporte de Incidencias</h4>
+                    <p class="edu-place">Codo a Codo</p>
+                    <p class="edu-desc">Testing manual, reporte y seguimiento de bugs, gestión de incidencias con Jira.</p>
+                </div>
+            </div>
+
+                  <div class="edu-item reveal delay-2">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2023</span>
+                    <h4>Desarrollador Web Python y Django</h4>
+                    <p class="edu-place">Codo a Codo</p>
+                    <p class="edu-desc">Desarrollo web backend con Python, framework Django y despliegue de aplicaciones.</p>
+                </div>
+            </div>
+
+            <div class="edu-item reveal delay-3">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2023</span>
+                    <h4>Desarrollo de Apps Móviles</h4>
+                    <p class="edu-place">Google Activate</p>
+                    <p class="edu-desc">Fundamentos de desarrollo mobile, diseño de experiencia de usuario y publicación de aplicaciones.</p>
+                </div>
+            </div>
+
+                <div class="edu-item reveal delay-3">
+                    <div class="edu-dot"></div>
+                    <div class="edu-content">
+                        <span class="edu-year">+4 años de experiencia</span>
+                        <h4>Técnico en Informática</h4>
+                        <p class="edu-place">Experiencia práctica con cartera de clientes propia, presencial y remota</p>
+                        <p class="edu-desc">Soporte y reparación de equipos, configuración de redes, diagnóstico de hardware y software.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section" id="experiencia">
+    <div class="section-container">
+        <div class="section-tag reveal">Experiencia</div>
+        <h2 class="section-title reveal delay-1">Experiencia Laboral</h2>
+        <div class="edu-timeline">
+
+            <div class="edu-item reveal delay-1">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">Mayo 2025 — Actualidad</span>
+                    <h4>Instructor de Informática y Desarrollo Web</h4>
+                    <p class="edu-place">Instituto CEA</p>
+                    <p class="edu-desc">Formación técnica en HTML, CSS, JavaScript y Python para distintos niveles académicos. Diseño de materiales didácticos y acompañamiento a estudiantes para su inserción laboral en el sector IT.</p>
+                </div>
+            </div>
+
+            <div class="edu-item reveal delay-2">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2017 – 2020 / Proyectos actuales</span>
+                    <h4>Consultor Técnico TI (Freelance)</h4>
+                    <p class="edu-place">Independiente</p>
+                    <p class="edu-desc">Soporte remoto y presencial, mantenimiento y reparación de hardware y software para clientes particulares y empresas. Resolución de incidencias críticas garantizando continuidad operativa.</p>
+                </div>
+            </div>
+
+            <div class="edu-item reveal delay-3">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                    <span class="edu-year">2019 — Abril 2025</span>
+                    <h4>Encargado de Logística y Procesos</h4>
+                    <p class="edu-place">TXT Transporte y Logística</p>
+                    <p class="edu-desc">Optimización de procesos operativos con Excel, logrando una reducción del 30% en errores de stock. Redacción de informes técnicos y coordinación de flujos de trabajo entre administración y despacho.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <section id="projects" class="slide-in">
-
-         <div id="logo_html_rg">
-            <img src="img\firebase-cloud.png" alt="logo_firebase">
-        </div>
-        <div id="logo_html_lf">
-            <img src="img\firebase-cloud.png" alt="logo_firebase">
-        </div>
-          
-       <div class="project">
-            <h3>veteApp</h3>
-            <img src="appVeterinaria.png" alt="App-veterinaria" class="project-image">
-            <p>App Veterinaria</p>
-        </div>
-          <a href="https://appveterinara.vercel.app/" target="_blank" class="view-project">Ver Proyecto</a>
-    </section>
-    <section id="projects" class="slide-in">
-        
-
-        <div id="logo_html_rg">
-            <img src="img\html_pic.png" alt="logo_html">
-        </div>
-        <div id="logo_html_lf">
-            <img src="img\html_pic.png" alt="logo_html">
-        </div>
-        
-        <div class="project">
-            <h3>CV Filter</h3>
-            <img src="cv_filter_pic.png" alt="Gestor de pedidos" class="project-image">
-            <p>Simulador de filtro ATS</p>
-        </div>
-        <a href="https://tweegio.github.io/CV_Filter/" target="_blank" class="view-project">Ver Proyecto</a>
-    </section>
-        <div id="logo_rt">
-            <img src="img\css_pic.png" alt="logo_css">
-        </div>
-        <div id="logo_lf">
-            <img src="img\css_pic.png" alt="logo_css">
-        </div>
-        <section id="projects" class="slide-in">
-        <div class="project">
-            <h3>Gestor de pedidos</h3>
-            <img src="generador_de_pedidos.png" alt="Gestor de pedidos" class="project-image">
-            <p>Aplicación web para la gestión de pedidos de bolsas.</p>
-        </div>
-            <a href="https://tweegio.github.io/carga_de_pedidios_TXT/" target="_blank" class="view-project">Ver Proyecto</a>
-    </section>
-    
-        <div id="logo_rt">
-            <img src="img\js_pic.png" alt="logo_js">
-        </div>
-        <div id="logo_lf">
-            <img src="img\js_pic.png" alt="logo_js">
-        </div>
-        <section id="projects" class="slide-in">
-        <div class="project">
-            <h3>Generator QR</h3>
-            <img src="generador_qr.png" alt="Generador de Qr" class="project-image">
-            <p>Generador de QR a partir de imágenes o links</p>
-        </div>
-             <a href="https://tweegio.github.io/QR_generator/" target="_blank" class="view-project">Ver Proyecto</a>
-        </section>
-    
-        <div id="logo_rt">
-            <img src="img\booststrap_pic.png" alt="logo_boost">
-        </div>
-        <div id="logo_lf">
-            <img src="img\booststrap_pic.png" alt="logo_boost">
-        </div>
-        
-        <section id="projects" class="slide-in">
-        <div class="project">
-            <h3>Cadaver Exquisito</h3>
-            <img src="cadaver_exquisito.png" alt="Cadaver exquisito" class="project-image">
-            <p>Juego para crear textos y despertar la inspiración.</p>
-        </div>
-            <a href="https://tweegio.github.io/CadaverExquisito/" target="_blank" class="view-project">Ver Proyecto</a>
-    </section>
-        <div id="logo_rt">
-            <img src="img\python_pic.png" alt="logo_python">
-        </div>
-        <div id="logo_lf">
-            <img src="img\python_pic.png" alt="logo_python">
-        </div>
-    
-        <section id="projects" class="slide-in">
-        <div class="project">
-            <h3>Café Aurora</h3>
-            <img src="cafe_aurora.png" alt="Café Aurara" class="project-image">
-            <p>Maqueta web, cafetería Aurora.</p>
-        </div>
-     <a href="https://tweegio.github.io/cafe_aurora/" target="_blank" class="view-project">Ver Proyecto</a>
 </section>
-  <div id="logo_rt">
-        <img src="img\Django_pic.png" alt="logo_django">
-    </div>
-    <div id="logo_lf">
-        <img src="img\Django_pic.png" alt="logo_django">
-    </div>
-<section id="projects" class="slide-in">
-    <div class="project">
-        <h3>Service Net</h3>
-        <img src="service_net.png" alt="Service Net" class="project-image">
-        <p>Página web, empresa de soluciones tecnológicas.</p>
-    </div>
-     <a href="https://tweegio.github.io/service_net_2/" target="_blank" class="view-project">Ver Proyecto</a>
+
+    <!-- PROYECTOS -->
+    <section class="projects-section" id="projects">
+        <div class="section-container">
+            <div class="section-tag reveal">Proyectos</div>
+            <h2 class="section-title reveal delay-1">Algunos de mis Proyectos</h2>
+            <div class="projects-grid">
+
+                <article class="project-card reveal delay-1">
+                    <div class="project-img-wrap">
+                        <img src="appVeterinaria.png" alt="veteApp – Sistema Veterinario" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://appveterinara.vercel.app/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span> <span>JavaScript</span><span>React</span><span>Firebase</span></div>
+                        <h3>veteApp</h3>
+                        <p>Sistema de gestión de turnos e historia clínica para veterinarias.</p>
+                        <a href="https://appveterinara.vercel.app/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-2">
+                    <div class="project-img-wrap">
+                        <img src="cv_filter_pic.png" alt="CV Filter – Simulador ATS" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/CV_Filter/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <h3>CV Filter</h3>
+                        <p>Simulador de filtro ATS para analizar y optimizar currículums vitae.</p>
+                        <a href="https://tweegio.github.io/CV_Filter/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-1">
+                    <div class="project-img-wrap">
+                        <img src="generador_de_pedidos.png" alt="Gestor de Pedidos" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/carga_de_pedidios_TXT/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>JavaScript</span><span>CSS</span></div>
+                        <h3>Gestor de Pedidos</h3>
+                        <p>App web para gestión y generación de pedidos de bolsas ecológicas.</p>
+                        <a href="https://tweegio.github.io/carga_de_pedidios_TXT/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-2">
+                    <div class="project-img-wrap">
+                        <img src="generador_qr.png" alt="Generator QR" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/QR_generator/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>JavaScript</span><span>HTML</span></div>
+                        <h3>Generator QR</h3>
+                        <p>Generador de códigos QR desde texto, imágenes o links.</p>
+                        <a href="https://tweegio.github.io/QR_generator/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-1">
+                    <div class="project-img-wrap">
+                        <img src="cadaver_exquisito.png" alt="Cadaver Exquisito" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/CadaverExquisito/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>JavaScript</span><span>Bootstrap</span></div>
+                        <h3>Cadáver Exquisito</h3>
+                        <p>Juego interactivo para crear textos colaborativos y despertar la inspiración.</p>
+                        <a href="https://tweegio.github.io/CadaverExquisito/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-2">
+                    <div class="project-img-wrap">
+                        <img src="cafe_aurora.png" alt="Café Aurora" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/cafe_aurora/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>Python</span></div>
+                        <h3>Café Aurora</h3>
+                        <p>Maqueta web completa para la cafetería Aurora.</p>
+                        <a href="https://tweegio.github.io/cafe_aurora/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+
+                <article class="project-card reveal delay-1">
+                    <div class="project-img-wrap">
+                        <img src="service_net.png" alt="Service Net" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/service_net_2/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <h3>Service Net</h3>
+                        <p>Sitio web para empresa de soluciones tecnológicas e informáticas.</p>
+                        <a href="https://tweegio.github.io/service_net_2/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                    
+                </article>
+
+                
+                <article class="project-card reveal delay-2">
+                    <div class="project-img-wrap">
+                        <img src="pablo-testa.png" alt="Pablo Testa" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/Pablo_Testa/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <h3>Pablo Testa</h3>
+                        <p>Sitio web para artista plástico.</p>
+                        <a href="https://tweegio.github.io/Pablo_Testa/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                </article>
+                
+                    <article class="project-card reveal delay-1">
+                    <div class="project-img-wrap">
+                        <img src="cuerpo&mente.png" alt="Cuerpo & Mente" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://tweegio.github.io/cuerpo_y_mente/" target="_blank" rel="noopener" class="overlay-btn">Ver proyecto ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                        <h3>Cuerpo & Mente</h3>
+                        <p>Sitio web para centro de estática y masajes.</p>
+                        <a href="https://tweegio.github.io/cuerpo_y_mente/" target="_blank" rel="noopener" class="project-link">Ver proyecto ↗</a>
+                    </div>
+                    
+                </article>
+            </div>
+        </div>
     </section>
-    
-    <section id="contact" class="slide-in">
-        <h2>Contacto</h2>
-        <p>Encuéntrame en <a href="https://www.linkedin.com/in/sergio-pereira-development/" target="_blank">LinkedIn</a> o visita mi <a href="https://github.com/tweegio" target="_blank">GitHub</a>.</p>
+
+    <!-- CONTACTO -->
+    <section class="contact-section" id="contact">
+        <div class="section-container">
+            <div class="section-tag reveal">Contacto</div>
+            <div class="contact-inner reveal delay-1">
+                <h2>¿Hablamos?</h2>
+                <p>Estoy disponible para oportunidades laborales, proyectos freelance o simplemente para charlar sobre tecnología.</p>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/sergio-pereira-development/" target="_blank" rel="noopener" class="contact-btn linkedin">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/tweegio" target="_blank" rel="noopener" class="contact-btn github">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
-    <hr id="fin">
-    <footer>
-        &#xa9 Tweegio 2025
+
+    <footer class="footer">
+        <p>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
-
