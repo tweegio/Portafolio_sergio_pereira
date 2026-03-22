@@ -58,9 +58,9 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 | CV Filter | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/CV_Filter/) |
 | Gestor de Pedidos | JavaScript, CSS | [ver](https://tweegio.github.io/carga_de_pedidios_TXT/) |
 | Generator QR | JavaScript, HTML | [ver](https://tweegio.github.io/QR_generator/) |
-| Cadáver Exquisito | JavaScript, Bootstrap | [ver](https://tweegio.github.io/CadaverExquisito/) |
+| Inmobiliarias GBA Zona Sur | HTML, CSS, JavaScript, Bootstrap | [ver](https://www.inmobiliariaszona.com.ar/) |
 | Café Aurora | HTML, CSS, Python | [ver](https://tweegio.github.io/cafe_aurora/) |
-| Service Net | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/service_net_2/) |
+| Service Net | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/Service-Net/) |
 | Pablo Testa | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/Pablo_Testa/) |
 | Cuerpo & Mente | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/cuerpo_y_mente/) |
 
