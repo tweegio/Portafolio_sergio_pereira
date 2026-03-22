@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generator QR — Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    .detail-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: #444; }
+
+    .detail-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      background: var(--surface);
+    }
+
+    .action-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--text); }
+
+    .screenshot-wrap {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      background: var(--surface);
+      display: block;
+    }
+
+    .readme-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .readme-content h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.8rem;
+      color: var(--text);
+    }
+    .readme-content h2:first-child { margin-top: 0; }
+
+    .readme-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .readme-content p {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content ul {
+      padding-left: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content li {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .readme-content code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .readme-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .readme-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+      color: #ccc;
+    }
+
+    .readme-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Diferenciador highlight */
+    .differentiator {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .differentiator .diff-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .differentiator p {
+      color: #ccc;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Casos de uso grid */
+    .use-cases {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    @media (max-width: 500px) {
+      .use-cases { grid-template-columns: 1fr; }
+    }
+
+    .use-case-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      color: #bbb;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .use-case-item .uc-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Generator QR
+    </div>
+
+    <h1>Generator QR</h1>
+
+    <p class="subtitle">
+      Generador de códigos QR pensado para usuarios no técnicos — comerciantes,
+      hoteles, oficinas — que necesitan compartir información física sin fricciones
+      ni pasos innecesarios.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">qrcodejs</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://tweegio.github.io/QR_generator/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+      <a href="https://github.com/tweegio/QR_generator" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="generador_qr.png" alt="Screenshot de Generator QR" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>¿Qué lo diferencia?</h2>
+
+      <div class="differentiator">
+        <p class="diff-label">// el punto clave</p>
+        <p>
+          La mayoría de los generadores de QR online están pensados para usuarios técnicos
+          o marketers: tienen opciones avanzadas, formularios largos, publicidad y flujos
+          de registro. Este proyecto apunta al otro extremo — el kiosquero, el recepcionista
+          de hotel, el dueño de un local — que necesita generar un QR en menos de 10 segundos
+          sin distracciones. El diferenciador no es técnico: es la decisión de diseño de
+          eliminar todo lo que no sea escribir y generar.
+        </p>
+      </div>
+
+      <h2>Casos de uso documentados</h2>
+      <p>En lugar de asumir que el usuario sabe para qué sirve un QR, el sitio incluye
+      una sección explicativa orientada a perfiles concretos:</p>
+
+      <div class="use-cases">
+        <div class="use-case-item"><span class="uc-icon">🔗</span>Compartir un enlace impreso</div>
+        <div class="use-case-item"><span class="uc-icon">🏷️</span>Identificar estantes o archiveros</div>
+        <div class="use-case-item"><span class="uc-icon">💲</span>Mostrar precio o valor de un producto</div>
+        <div class="use-case-item"><span class="uc-icon">📍</span>Señalizar ubicación de un objeto</div>
+        <div class="use-case-item"><span class="uc-icon">🏨</span>Info para huéspedes en hoteles</div>
+        <div class="use-case-item"><span class="uc-icon">⚙️</span>Indicar uso de un electrodoméstico</div>
+      </div>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>Generación del lado del cliente con qrcodejs</h3>
+      <p>
+        La imagen del QR se genera directamente en el navegador usando la librería
+        <code>qrcodejs</code> vía CDN, sin llamadas a APIs externas. Esto garantiza
+        generación instantánea, funcionamiento offline y cero dependencia de servidores.
+        El proyecto es deployable como sitio 100% estático en GitHub Pages.
+      </p>
+
+      <h3>Flujo deliberadamente mínimo</h3>
+      <p>
+        El flujo tiene tres pasos y no más: escribís, generás, usás. No hay registro,
+        no hay opciones avanzadas que confundan, no hay publicidad. Cada elemento de la
+        interfaz justifica su existencia. Esta simpleza es una decisión de producto, no
+        una limitación técnica.
+      </p>
+
+      <h2>Estructura del proyecto</h2>
+      <pre><code>/
+├── index.html
+├── logoQr.png
+├── css/
+│   └── styles.css
+└── js/
+    └── script.js</code></pre>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina</footer>
+
+</body>
+</html>
