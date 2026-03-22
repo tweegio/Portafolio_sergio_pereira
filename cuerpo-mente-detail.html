@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuerpo & Mente — Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    .detail-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: #444; }
+
+    .detail-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      background: var(--surface);
+    }
+
+    .action-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--text); }
+
+    .screenshot-wrap {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      background: var(--surface);
+      display: block;
+    }
+
+    .readme-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .readme-content h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.8rem;
+      color: var(--text);
+    }
+    .readme-content h2:first-child { margin-top: 0; }
+
+    .readme-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .readme-content p {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content ul {
+      padding-left: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content li {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .readme-content code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    /* Contexto freelance */
+    .context-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .context-block .context-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .context-block p {
+      color: #ccc;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Secciones de la landing */
+    .landing-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .flow-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .flow-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      border: 1px solid rgba(232,255,71,0.3);
+      border-radius: 2px;
+      padding: 0.15rem 0.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .flow-text strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .flow-text span {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    /* Integraciones */
+    .integrations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    @media (max-width: 500px) {
+      .integrations-grid { grid-template-columns: 1fr; }
+    }
+
+    .integration-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.1rem;
+    }
+
+    .integration-card .int-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+
+    .integration-card p {
+      font-size: 0.83rem;
+      color: #999;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Cuerpo & Mente
+    </div>
+
+    <h1>Cuerpo & Mente</h1>
+
+    <p class="subtitle">
+      Landing page para un centro de estética y masajes en Ingeniero Budge.
+      Una sola página, flujo lineal, integración directa con WhatsApp y
+      Google Maps — sin formularios ni pasos intermedios.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">WhatsApp API</span>
+      <span class="tag">Google Maps</span>
+      <span class="tag">Freelance</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://tweegio.github.io/cuerpo_y_mente/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+      <a href="https://github.com/tweegio/cuerpo_y_mente" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="cuerpo&mente.png" alt="Screenshot de Cuerpo & Mente" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Contexto</h2>
+      <div class="context-block">
+        <p class="context-label">// cliente real · proyecto freelance</p>
+        <p>
+          Centro de estética y masajes con reputación local consolidada (5 estrellas en Google)
+          que no tenía presencia digital. El requerimiento fue claro: una landing simple,
+          con los servicios visibles, que convierta la visita en un contacto por WhatsApp
+          o en una visita al local, sin complejidad técnica de mantenimiento para el cliente.
+        </p>
+      </div>
+
+      <h2>Estructura de la landing</h2>
+      <div class="landing-flow">
+        <div class="flow-item">
+          <span class="flow-num">01</span>
+          <div class="flow-text">
+            <strong>Navbar</strong>
+            <span>Navegación fija con logo — Nosotros, Servicios, Contacto</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-num">02</span>
+          <div class="flow-text">
+            <strong>Carousel hero</strong>
+            <span>5 imágenes de los servicios con transición automática</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-num">03</span>
+          <div class="flow-text">
+            <strong>Nosotros</strong>
+            <span>Descripción del centro, propuesta de valor y diferenciadores</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-num">04</span>
+          <div class="flow-text">
+            <strong>Servicios</strong>
+            <span>Masajes · Depilación · Pedicura · Faciales · Corporales · Pestañas · Uñas</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-num">05</span>
+          <div class="flow-text">
+            <strong>Contacto</strong>
+            <span>WhatsApp, redes sociales, dirección + iframe Google Maps</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Integraciones</h2>
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <p class="int-label">WhatsApp API</p>
+          <p>Botón de contacto directo vía <code>wa.me</code> con mensaje preescrito para reducir la fricción del primer contacto.</p>
+        </div>
+        <div class="integration-card">
+          <p class="int-label">Google Maps iframe</p>
+          <p>Mapa embebido con la ubicación exacta del local en Lisandro de la Torre 2155, Ingeniero Budge.</p>
+        </div>
+        <div class="integration-card">
+          <p class="int-label">Redes sociales</p>
+          <p>Links directos a Instagram y otras redes sin formulario — el canal de contacto preferido del cliente.</p>
+        </div>
+        <div class="integration-card">
+          <p class="int-label">Carousel JS</p>
+          <p>Carrusel de 5 imágenes implementado en JavaScript vanilla, sin librerías externas.</p>
+        </div>
+      </div>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>Una sola página, flujo lineal</h3>
+      <p>
+        El requerimiento del cliente era simplicidad total. Una landing de una sola sección
+        elimina la fricción de navegación: el visitante scrollea y encuentra todo en orden —
+        quiénes son, qué ofrecen, cómo contactarlos. No hay páginas internas ni rutas
+        que mantener.
+      </p>
+
+      <h3>Contacto sin formulario</h3>
+      <p>
+        El cliente recibe consultas por WhatsApp e Instagram, no por email.
+        Reemplazar un formulario por links directos refleja cómo opera el negocio
+        realmente y elimina una barrera técnica: no hay backend que mantener,
+        no hay datos que gestionar, no hay spam.
+      </p>
+
+      <h3>Paleta de colores definida por el cliente</h3>
+      <p>
+        El diseño respetó la escala de colores provista en el documento de requerimientos,
+        trasladando la identidad visual del local físico a la versión digital. El uso de
+        variables CSS facilitó la aplicación consistente de la paleta en todos los componentes.
+      </p>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina</footer>
+
+</body>
+</html>
