@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>veteApp — Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .detail-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: #444; }
+
+    .detail-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      background: var(--surface);
+    }
+
+    /* Links de acción */
+    .action-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--text); }
+
+    /* ── SCREENSHOT ── */
+    .screenshot-wrap {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      background: var(--surface);
+      display: block;
+    }
+
+    /* ── CONTENIDO README ── */
+    .readme-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Estilos para el contenido del README */
+    .readme-content h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.8rem;
+      color: var(--text);
+    }
+    .readme-content h2:first-child { margin-top: 0; }
+
+    .readme-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .readme-content p {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content ul,
+    .readme-content ol {
+      padding-left: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content li {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .readme-content code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .readme-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .readme-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+      color: #ccc;
+    }
+
+    .readme-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.2rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .readme-content a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .readme-content a:hover { border-color: var(--accent2); }
+
+    .readme-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      veteApp
+    </div>
+
+    <h1>veteApp</h1>
+
+    <p class="subtitle">
+      Sistema de gestión de turnos e historia clínica para veterinarias.
+      Desarrollado con React y Firebase para manejo en tiempo real.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">React</span>
+      <span class="tag">Firebase</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://appveterinara.vercel.app/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+      <a href="https://github.com/tweegio" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </header>
+
+  <!-- ── SCREENSHOT ── -->
+  <div class="screenshot-wrap">
+    <img
+      src="appVeterinaria.png"
+      alt="Screenshot de veteApp"
+    />
+  </div>
+
+  <!-- ── README ── -->
+  <main class="readme-wrap">
+    <p class="section-label">// README.md</p>
+
+    <div class="readme-content">
+
+      <!-- 
+        ============================================================
+        PEGÁ AQUÍ EL CONTENIDO DE TU README
+        Convertí el Markdown a HTML manualmente o usá un conversor
+        online como: https://markdowntohtml.com/
+        ============================================================
+      -->
+
+      <h2>¿Qué es veteApp?</h2>
+      <p>
+        veteApp es una aplicación web desarrollada para simplificar la gestión diaria
+        de clínicas veterinarias. Permite registrar pacientes, asignar y consultar turnos,
+        y mantener un historial clínico actualizado de cada animal.
+      </p>
+
+      <h2>Motivación</h2>
+      <p>
+        El proyecto surgió de la necesidad real de una veterinaria de la zona que manejaba
+        todo en papel. El objetivo fue digitalizarla con una solución simple, sin curva de
+        aprendizaje y accesible desde cualquier dispositivo.
+      </p>
+
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Registro y búsqueda de pacientes (mascotas y dueños)</li>
+        <li>Gestión de turnos con calendario</li>
+        <li>Historia clínica por paciente</li>
+        <li>Autenticación de usuarios con Firebase Auth</li>
+        <li>Base de datos en tiempo real con Firestore</li>
+      </ul>
+
+      <h2>Tecnologías utilizadas</h2>
+      <ul>
+        <li><code>React</code> — UI y manejo de estado</li>
+        <li><code>Firebase Auth</code> — autenticación</li>
+        <li><code>Firestore</code> — base de datos en tiempo real</li>
+        <li><code>CSS Modules</code> — estilos por componente</li>
+        <li><code>Vercel</code> — deploy y hosting</li>
+      </ul>
+
+      <h2>Instalación local</h2>
+      <pre><code>git clone https://github.com/tweegio/veteApp
+cd veteApp
+npm install
+npm run dev</code></pre>
+
+      <blockquote>
+        Necesitás configurar tus propias credenciales de Firebase en un archivo <code>.env</code> local.
+      </blockquote>
+
+      <h2>Lo que aprendí</h2>
+      <p>
+        Fue mi primer proyecto con Firebase. Aprendí a estructurar colecciones en Firestore,
+        manejar listeners en tiempo real y separar la lógica de autenticación del resto de la app.
+        También mejoré mucho en el manejo de estado global con Context API.
+      </p>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina</footer>
+
+</body>
+</html>
