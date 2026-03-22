@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #29ac18;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO */
+    .blog-hero {
+      padding: 9rem 2rem 4rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .blog-hero .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .blog-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .blog-hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    /* FILTER TABS */
+    .filter-bar {
+      max-width: 860px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(232,255,71,0.05);
+    }
+
+    /* POSTS GRID */
+    .posts-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    /* POST CARD */
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.25s ease;
+    }
+    .post-card:hover { border-color: #444; transform: translateX(4px); }
+    .post-card:hover::before { transform: scaleY(1); }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .post-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .tag-frontend  { background: rgba(71,184,255,0.1); color: var(--accent2); border: 1px solid rgba(71,184,255,0.2); }
+    .tag-devops    { background: rgba(232,255,71,0.08); color: var(--accent); border: 1px solid rgba(232,255,71,0.15); }
+    .tag-carrera   { background: rgba(255,150,71,0.08); color: #ff9647; border: 1px solid rgba(255,150,71,0.15); }
+    .tag-tips      { background: rgba(150,71,255,0.08); color: #b47fff; border: 1px solid rgba(150,71,255,0.15); }
+
+    .post-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+    .post-card:hover h2 { color: var(--accent); }
+
+    .post-excerpt {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .read-time {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .read-more {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    /* POST EXPANDED */
+    .post-body {
+      display: none;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      animation: fadeIn 0.3s ease;
+    }
+    .post-body.open { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .post-body p {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.5rem 0 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .post-body code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .post-body ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .post-body ul li {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .collapse-btn {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .collapse-btn:hover { border-color: #555; color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html" class="nav-back">← Volver al portafolio</a>
+  </nav>
+
+  <section class="blog-hero">
+    <p class="label">// blog</p>
+    <h1>Notas &<br>reflexiones</h1>
+    <p>Escribo sobre lo que aprendo, lo que construyo y lo que me resulta útil en el camino como desarrollador.</p>
+    <p>La información de este Blog sera compartido en redes solo con fines</p>
+    <p>de compartir mi conocimiento con la comunidad IT.</p>
+  </section>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterPosts('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filterPosts('frontend', this)">Frontend</button>
+    <button class="filter-btn" onclick="filterPosts('devops', this)">DevOps</button>
+    <button class="filter-btn" onclick="filterPosts('carrera', this)">Carrera</button>
+    <button class="filter-btn" onclick="filterPosts('tips', this)">Tips</button>
+  </div>
+
+  <div class="posts-container" id="posts-container">
+
+    <article class="post-card" data-category="devops">
+      <div class="post-meta">
+        <span class="post-date">22 Mar 2026</span>
+        <span class="post-tag tag-devops">DevOps</span>
+      </div>
+      <h2>Deploy en Vercel vs GitHub Pages: ¿cuándo uso cada uno y cundo ambos?</h2>
+      <p class="post-excerpt">Ambos son gratuitos, pero no son lo mismo. Esto es lo que considero antes de elegir.</p>
+      <div class="post-footer">
+        <span class="read-time">3 min de lectura</span>
+        <span class="read-more">Leer →</span>
+      </div>
+      <div class="post-body">
+        <p>La mayoría de mis proyectos terminan en uno de los dos. Con el tiempo fui desarrollando un criterio claro para elegir.</p>
+        <h3>GitHub Pages</h3>
+        <p>Ideal para proyectos estáticos simples: portafolios, landing pages, demos de HTML/CSS/JS puro. Cero configuración si el repo es público.</p>
+        <h3>Vercel</h3>
+        <p>Cuando el proyecto tiene; dominio propio, React, variables de entorno, o necesito features como redirects y edge functions.</p>
+        <h3>GitHub y Vercel juntos</h3>
+        <p><b>La tercera opción</b>, y la que uso en la actualidad, es subir el repositorio a GitHub y desplegar el proyecto en Vercel.</p>
+        <p>La razón técnica concreta: Vercel entiende frameworks como React, Next.js o Vite, hace el <code>npm run build</code> por vos, 
+         sirve los archivos estáticos optimizados, y te da CDN global, HTTPS y dominio custom sin configurar nada. 
+         GitHub Pages no tiene ese pipeline de build integrado.</p>
+         <p>En una línea: GitHub = repositorio, Vercel = servidor inteligente que escucha ese repositorio.</p>
+        <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
+      </div>
+    </article>
+
+    <article class="post-card" data-category="frontend">
+      <div class="post-meta">
+        <span class="post-date">15 Mar 2026</span>
+        <span class="post-tag tag-frontend">Frontend</span>
+      </div>
+      <h2>CSS que escribo diferente desde que aprendí custom properties</h2>
+      <p class="post-excerpt">Las variables CSS no son solo conveniencia: cambian la forma en que pensás el diseño de un sistema.</p>
+      <div class="post-footer">
+        <span class="read-time">4 min de lectura</span>
+        <span class="read-more">Leer →</span>
+      </div>
+      <div class="post-body">
+        <p>Antes de usar <code>custom properties</code> en serio, mi CSS era un cementerio de valores hardcodeados repetidos. Un color cambiaba y tenía que hacer find & replace por todo el proyecto.</p>
+        <h3>¿Qué cambió?</h3>
+        <p>Empecé a definir todas mis variables en <code>:root</code> y a pensar en el CSS como un sistema de tokens. Colores, espaciados, tipografías, tiempos de animación. Todo centralizado.</p>
+        <ul>
+          <li>Un cambio en <code>:root</code> impacta todo el sitio al instante.</li>
+          <li>Podés tener temas (dark/light) con solo sobrescribir variables.</li>
+          <li>Tu CSS se vuelve autodocumentado.</li>
+        </ul>
+        <p>El salto de calidad es real. Cuando un cliente te pide cambiar la paleta de colores
+          a último momento, tener todo en <code>:root</code> te salva la vida 😅.
+          Si todavía no lo hacés en todos tus proyectos, te recomiendo que empieces hoy.</p>
+        <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
+      </div>
+    </article>
+
+    <article class="post-card" data-category="carrera">
+      <div class="post-meta">
+        <span class="post-date">02 Mar 2026</span>
+        <span class="post-tag tag-carrera">Carrera</span>
+      </div>
+      <h2>Lo que aprendí enseñando lo que todavía estaba aprendiendo</h2>
+      <p class="post-excerpt">Ser instructor antes de sentirte "listo" es incómodo. También es lo mejor que me pasó profesionalmente.</p>
+      <div class="post-footer">
+        <span class="read-time">5 min de lectura</span>
+        <span class="read-more">Leer →</span>
+      </div>
+      <div class="post-body">
+        <p>Cuando empecé a dar clases en el Instituto CEA, todavía estaba consolidando muchos de los conceptos que enseñaba. Eso generaba una tensión constante.</p>
+        <h3>La trampa de esperar estar listo</h3>
+        <p>Nadie se siente completamente listo para enseñar y el sindrome del inspostor siempre está latente. Pero esa brecha entre lo que sabés y lo que tenés que explicar te fuerza a estructurar el conocimiento de una forma que simplemente consumirlo no te lo da. 
+        Te obliga a investigar, codear para crear ejemplos simples para explicar conceptos y estar preparado para responder dudas.</p>
+        <p>Explicar <code>flexbox</code>, <code> grid</code> o <code>integraciones</code> a personas con distintos niveles técnicos te obliga a entenderlo desde múltiples ángulos. Creo que eso te hace mejor desarrollador, no solo mejor docente.</p>
+        <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
+      </div>
+    </article>
+
+    <article class="post-card" data-category="tips">
+      <div class="post-meta">
+        <span class="post-date">18 Feb 2026</span>
+        <span class="post-tag tag-tips">Tips</span>
+      </div>
+      <h2>3 hábitos que mejoraron mi velocidad de desarrollo</h2>
+      <p class="post-excerpt">No son frameworks ni herramientas nuevas. Son cambios pequeños que se acumulan.</p>
+      <div class="post-footer">
+        <span class="read-time">3 min de lectura</span>
+        <span class="read-more">Leer →</span>
+      </div>
+      <div class="post-body">
+        <p>Después de meses trabajando en proyectos propios y freelance, noté que la diferencia de velocidad no vino de aprender una tecnología nueva sino de estos tres cambios:</p>
+        <h3>1. Snippets para todo lo que repito</h3>
+        <p>Estructura HTML base, componentes comunes, funciones de utilidad. Si lo escribí más de dos veces, lo convierto en snippet en VS Code.</p>
+        <h3>2. Commits pequeños y descriptivos</h3>
+        <p>Un commit por feature o fix. Nada de "cambios varios". Cuando tengo que revertir algo, me agradezco a mí mismo.</p>
+        <h3>3. Diseñar en el browser, no solo en Figma</h3>
+        <p>Para proyectos chicos, empiezo directo en CSS. Itero más rápido y el resultado final ya está en código.</p>
+        <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina, Bs. As.</footer>
+
+  <script>
+    // Toggle post open/close
+    document.querySelectorAll('.post-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.classList.contains('collapse-btn')) return;
+        const body = this.querySelector('.post-body');
+        const isOpen = body.classList.contains('open');
+        // close all
+        document.querySelectorAll('.post-body').forEach(b => b.classList.remove('open'));
+        if (!isOpen) body.classList.add('open');
+      });
+    });
+
+    function togglePost(btn) {
+      btn.closest('.post-body').classList.remove('open');
+    }
+
+    // Filter
+    function filterPosts(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.post-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
