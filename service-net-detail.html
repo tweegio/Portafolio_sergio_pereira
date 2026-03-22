@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Service-Net — Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    .detail-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: #444; }
+
+    .detail-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      background: var(--surface);
+    }
+
+    .action-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--text); }
+
+    .screenshot-wrap {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      background: var(--surface);
+      display: block;
+    }
+
+    .readme-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .readme-content h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.8rem;
+      color: var(--text);
+    }
+    .readme-content h2:first-child { margin-top: 0; }
+
+    .readme-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .readme-content p {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content ul {
+      padding-left: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content li {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .readme-content code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .readme-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .readme-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+      color: #ccc;
+    }
+
+    .readme-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Tabla de páginas */
+    .pages-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.4rem;
+    }
+
+    .pages-table th {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pages-table td {
+      color: #bbb;
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .pages-table tr:last-child td { border-bottom: none; }
+
+    .pages-table td:first-child {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    /* Servicios grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    @media (max-width: 500px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      color: #bbb;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .service-item::before {
+      content: '—';
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* Contexto freelance */
+    .context-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .context-block .context-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .context-block p {
+      color: #ccc;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Service-Net
+    </div>
+
+    <h1>Service-Net</h1>
+
+    <p class="subtitle">
+      Sitio web corporativo para una empresa de soluciones informáticas.
+      Proyecto freelance con foco en claridad de servicios, SEO y
+      arquitectura multipágina sin dependencias externas.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">SEO</span>
+      <span class="tag">Freelance</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://tweegio.github.io/service_net_2/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+      <a href="https://github.com/tweegio/service_net_2" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="service_net.png" alt="Screenshot de Service-Net" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Contexto</h2>
+      <div class="context-block">
+        <p class="context-label">// proyecto freelance</p>
+        <p>
+          Service-Net es un cliente real del rubro IT. El desafío fue comunicar
+          un catálogo técnico de servicios de forma clara para un público no especializado,
+          manteniendo la credibilidad corporativa que el rubro exige.
+        </p>
+      </div>
+
+      <h2>Servicios presentados</h2>
+      <div class="services-grid">
+        <div class="service-item">Soporte IT corporativo personalizado</div>
+        <div class="service-item">Análisis, configuración e instalación de redes</div>
+        <div class="service-item">Implementación y administración de servidores</div>
+        <div class="service-item">Backups y resguardo de información</div>
+        <div class="service-item">Mantenimientos preventivos</div>
+        <div class="service-item">Auditorías y consultorías informáticas</div>
+      </div>
+
+      <h2>Páginas del sitio</h2>
+      <table class="pages-table">
+        <thead>
+          <tr>
+            <th>Página</th>
+            <th>Contenido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>index.html</td><td>Home — presentación de la empresa y servicios</td></tr>
+          <tr><td>servicio_tecnico.html</td><td>Detalle de soporte técnico IT</td></tr>
+          <tr><td>redes.html</td><td>Servicios de redes e infraestructura</td></tr>
+          <tr><td>disenio_web.html</td><td>Servicio de diseño y desarrollo web</td></tr>
+          <tr><td>contacto.html</td><td>Formulario de contacto</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>Multipágina por servicio para SEO</h3>
+      <p>
+        Cada servicio tiene su propia URL en lugar de estar agrupado en una sola página.
+        Esto permite que cada servicio sea indexado de forma independiente por los buscadores,
+        mejorando el posicionamiento para búsquedas específicas como "soporte IT zona sur" o
+        "instalación de redes empresas".
+      </p>
+
+      <h3>SEO técnico desde la base</h3>
+      <p>
+        El proyecto incluye <code>sitemap.xml</code> para guiar a los crawlers por todas
+        las páginas del sitio, <code>robots.txt</code> para control de acceso, y un archivo
+        <code>_headers</code> con configuración de headers HTTP de seguridad
+        (X-Frame-Options, X-Content-Type-Options, etc.).
+      </p>
+
+      <h3>Cero dependencias externas</h3>
+      <p>
+        El sitio corre con HTML, CSS y JS puros, sin frameworks ni librerías de terceros.
+        Esto garantiza tiempos de carga mínimos, sin overhead innecesario para un sitio
+        institucional de estas características.
+      </p>
+
+      <h2>Estructura del proyecto</h2>
+      <pre><code>/
+├── index.html
+├── servicio_tecnico.html · redes.html
+├── disenio_web.html · contacto.html
+├── robots.txt · sitemap.xml · _headers
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+└── assets/</code></pre>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde BS. As., Argentina</footer>
+
+</body>
+</html>
