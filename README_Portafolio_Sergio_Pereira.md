@@ -33,19 +33,31 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 ```
 /
 ├── index.html
-├── styles.css
-├── script.js
+├── app-veterinaria-detail.html
+├── portal-inmobiliarias-detail.html
+├── service-net-detail.html
+├── qr-generator-detail.html
+├── pablo-testa-detail.html
+├── gestor-de-pedidos-detail.html
+├── cvfilter-detail.html
+├── cuerpo-mente-detail.html
+├── cafe-aurora-detail.html
+├── blog.html
 ├── fondo01.jpg
 ├── header.jpg
 ├── appVeterinaria.png
-├── cadaver_exquisito.png
+├── portal-inmobiliarias.png
 ├── cafe_aurora.png
 ├── cv_filter_pic.png
 ├── generador_de_pedidos.png
-├── generador_qr.png
+├── qr-generator.png
 ├── pablo-testa.png
 ├── cuerpo&mente.png
-└── service_net.png
+├── service_net.png
+├── styles.css
+├── script.js
+└──Readme.md
+
 ```
 
 ---
@@ -67,6 +79,20 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 
 ---
 
+## seciones de detalles de proyectos (detail)
+
+Detalles y desiciones técnicas tomadas en cada proyecto. Enumerando las tecnologías usadas
+y que problema concreto se resuelve en cada uno de ellos.
+Incluye link a cada repositorio público de los proyectos incorporados al portafolio.
+
+
+## Blog
+
+Escribo sobre lo que aprendo, lo que construyo y lo que me resulta útil en el camino como desarrollador.
+La información de este Blog sera compartido en redes solo con fines de compartir mi conocimiento con la comunidad IT.
+
+---
+
 ## Decisiones técnicas
 
 **Sin frameworks para el portfolio en sí.** Opté por JavaScript vanilla para demostrar dominio de los fundamentos del lenguaje sin depender de abstracciones. El sistema de traducción, las animaciones y la navegación están implementados desde cero.
@@ -76,6 +102,8 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 **CSS custom properties.** Toda la paleta de colores, tipografías y transiciones están definidas como variables en `:root`, lo que hace que cualquier cambio visual sea centralizado y consistente.
 
 **Sistema i18n propio.** La traducción ES/EN se resuelve con un objeto de claves y el atributo `data-i18n` en cada elemento, sin ninguna librería externa. Simple, liviano y mantenible.
+
+
 
 ---
 
