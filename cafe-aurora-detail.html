@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Café Aurora — Sergio Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #e8ff47;
+      --accent2: #47b8ff;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    .detail-hero {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .breadcrumb {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: #444; }
+
+    .detail-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .detail-hero .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 1.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      background: var(--surface);
+    }
+
+    .action-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--accent);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--text); }
+
+    .screenshot-wrap {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      background: var(--surface);
+      display: block;
+    }
+
+    .readme-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .readme-content h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.8rem;
+      color: var(--text);
+    }
+    .readme-content h2:first-child { margin-top: 0; }
+
+    .readme-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .readme-content p {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content ul {
+      padding-left: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .readme-content li {
+      color: #bbb;
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin-bottom: 0.3rem;
+    }
+
+    .readme-content code {
+      font-family: var(--font-mono);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .readme-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .readme-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.82rem;
+      color: #ccc;
+    }
+
+    .readme-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* Tabla de páginas */
+    .pages-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.4rem;
+    }
+
+    .pages-table th {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pages-table td {
+      color: #bbb;
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .pages-table tr:last-child td { border-bottom: none; }
+
+    .pages-table td:first-child {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    /* Stack visual */
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .stack-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+    .stack-frontend { background: rgba(71,184,255,0.08); color: var(--accent2); border: 1px solid rgba(71,184,255,0.2); }
+    .stack-backend  { background: rgba(232,255,71,0.08); color: var(--accent); border: 1px solid rgba(232,255,71,0.15); }
+    .stack-tools    { background: rgba(180,127,255,0.08); color: #b47fff; border: 1px solid rgba(180,127,255,0.2); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Café Aurora
+    </div>
+
+    <h1>Café Aurora</h1>
+
+    <p class="subtitle">
+      Sitio web completo para una cafetería — desde el hero animado hasta el sistema
+      de reservas y formulario de contacto con backend en PHP. Un ciclo completo de
+      desarrollo frontend para el rubro gastronómico.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">SCSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">PHP</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://tweegio.github.io/cafe_aurora/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+      <a href="https://github.com/tweegio/cafe_aurora" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="cafe_aurora.png" alt="Screenshot de Café Aurora" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Sobre el proyecto</h2>
+      <p>
+        Café Aurora es una maqueta funcional que abarca el ciclo completo de un sitio
+        para un negocio gastronómico: identidad visual, múltiples páginas, sistema de
+        reservas, menú interactivo y formulario de contacto. Está pensado para demostrar
+        la capacidad de entregar un producto web terminado a un cliente real del rubro.
+      </p>
+
+      <h2>Páginas del sitio</h2>
+      <table class="pages-table">
+        <thead>
+          <tr>
+            <th>Página</th>
+            <th>Contenido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>index.html</td><td>Landing con hero carousel, servicios, menú destacado y cupón de cumpleaños</td></tr>
+          <tr><td>menu.html</td><td>Carta completa — cafés calientes y fríos con imágenes y descripciones</td></tr>
+          <tr><td>reservas.html</td><td>Sistema de reserva online con selector de personas y promoción 20% OFF</td></tr>
+          <tr><td>nosotros.html</td><td>Historia y visión de la cafetería</td></tr>
+          <tr><td>servicio.html</td><td>Detalle de servicios: delivery, granos frescos, calidad</td></tr>
+          <tr><td>testimonio.html</td><td>Reseñas de clientes con carrusel</td></tr>
+          <tr><td>contacto.html</td><td>Formulario de contacto con envío real vía PHP</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Stack utilizado</h2>
+      <div class="stack-row">
+        <span class="stack-item stack-frontend">HTML5</span>
+        <span class="stack-item stack-frontend">CSS3</span>
+        <span class="stack-item stack-frontend">JavaScript</span>
+        <span class="stack-item stack-tools">SCSS</span>
+        <span class="stack-item stack-backend">PHP</span>
+        <span class="stack-item stack-tools">GitHub Pages</span>
+      </div>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>SCSS como sistema de estilos</h3>
+      <p>
+        En lugar de CSS plano, se usó SCSS para organizar los estilos por componentes,
+        aprovechar variables de color y tipografía, y facilitar el mantenimiento. Esto
+        refleja un flujo de trabajo más cercano al desarrollo profesional real.
+        SCSS representa el 30.9% del código del repositorio.
+      </p>
+
+      <h3>Sitio multi-página con navegación consistente</h3>
+      <p>
+        Cada sección es una página HTML independiente con nav y footer compartidos.
+        Esta arquitectura mantiene URLs semánticas por sección y compatibilidad total
+        con GitHub Pages, sin necesidad de un router ni framework.
+      </p>
+
+      <h3>PHP para el formulario de contacto</h3>
+      <p>
+        El formulario usa un script PHP en <code>/mail/</code> para el envío real de
+        emails, integrando el flujo completo cliente-servidor. Aunque GitHub Pages no
+        ejecuta PHP, el backend está implementado y listo para deployarse en cualquier
+        hosting compartido.
+      </p>
+
+      <h3>Carousel con librería externa</h3>
+      <p>
+        Se integró una librería desde <code>/lib/</code> priorizando estabilidad y
+        resultado visual sobre codear la funcionalidad desde cero — una decisión pragmática
+        válida en proyectos reales donde el tiempo y la confiabilidad importan.
+      </p>
+
+      <h2>Estructura del proyecto</h2>
+      <pre><code>cafe_aurora/
+├── index.html · menu.html · reservas.html
+├── nosotros.html · servicio.html
+├── testimonio.html · contacto.html
+├── css/        ← CSS compilado
+├── scss/       ← fuente SCSS con variables y componentes
+├── js/         ← carousel, interacciones, validaciones
+├── lib/        ← librerías externas
+├── img/        ← imágenes del sitio
+└── mail/       ← script PHP para envío de formulario</code></pre>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Argentina</footer>
+
+</body>
+</html>
