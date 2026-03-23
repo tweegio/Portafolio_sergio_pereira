@@ -68,6 +68,7 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 |---|---|---|
 | veteApp | React, Firebase | [ver](https://appveterinara.vercel.app/) |
 | CV Filter | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/CV_Filter/) |
+| BotDetect | HTML, CSS, JavaScript | [ver](https://tweegio.github.io/BotDetect/) |
 | Gestor de Pedidos | JavaScript, CSS | [ver](https://tweegio.github.io/carga_de_pedidios_TXT/) |
 | Generator QR | JavaScript, HTML | [ver](https://tweegio.github.io/QR_generator/) |
 | Inmobiliarias GBA Zona Sur | HTML, CSS, JavaScript, Bootstrap | [ver](https://www.inmobiliariaszona.com.ar/) |
