@@ -35,7 +35,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: var(--font-body);
     background-color: var(--bg-body);
-    background-image: url('fondo01.jpg');
+    background-image: url('https://res.cloudinary.com/drdzj9uyn/image/upload/q_auto/f_auto/v1775841992/fondo01_u0q8fm.jpg');
     background-attachment: fixed;
     background-size: cover;
     color: var(--text-main);
@@ -233,7 +233,7 @@ body > * { position: relative; z-index: 1; }
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('header.jpg');
+    background-image: url('https://res.cloudinary.com/drdzj9uyn/image/upload/q_auto/f_auto/v1775841995/header_okqd2h.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.28) saturate(1.3);
