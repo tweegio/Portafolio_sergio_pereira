@@ -114,7 +114,7 @@ body > * { position: relative; z-index: 1; }
 ======================================== */
 .navbar {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 2; left: 0; right: 0;
     z-index: 1000;
     background: transparent;
     transition: background var(--transition), backdrop-filter var(--transition), border-color var(--transition);
@@ -144,6 +144,7 @@ body > * { position: relative; z-index: 1; }
     user-select: none;
     cursor: default;
     text-shadow: none;
+    margin-top: 20px;
 }
 .nav-logo .dot { color: var(--green-main); }
 
