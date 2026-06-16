@@ -504,9 +504,130 @@
         <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
       </div>
       </article>
-      
-      
-      </div>
+
+<article class="post-card" data-category="devops">
+  <div class="post-meta">
+    <span class="post-date">16 Jun 2026</span>
+    <span class="post-tag tag-devops">DevOps</span>
+  </div>
+
+  <h2>Cómo resolví conflictos entre Content Security Policy y Google AdSense</h2>
+
+  <p class="post-excerpt">
+    Implementar una CSP mejoró la seguridad del sitio, pero también bloqueó recursos necesarios para Google AdSense. Así fue el proceso para encontrar el equilibrio entre protección y funcionalidad.
+  </p>
+
+  <div class="post-footer">
+    <span class="read-time">4 min de lectura</span>
+    <span class="read-more">Leer →</span>
+  </div>
+
+  <div class="post-body">
+    <p>
+      Cuando decidí implementar una <strong>Content Security Policy (CSP)</strong>, el objetivo era reforzar la seguridad del proyecto limitando qué recursos externos podían ejecutarse en el navegador.
+    </p>
+
+    <p>
+      La teoría era simple: permitir únicamente los dominios necesarios y bloquear cualquier origen desconocido. Sin embargo, al integrar Google AdSense comenzaron a aparecer errores que impedían el funcionamiento correcto de algunos servicios de Google.
+    </p>
+
+    <h3>El problema</h3>
+
+    <p>
+      Después de desplegar la nueva política de seguridad, la consola del navegador empezó a mostrar bloqueos relacionados con recursos de Google Ads.
+    </p>
+
+    <p>
+      Aunque AdSense estaba correctamente instalado, varias solicitudes eran rechazadas por las directivas definidas en la CSP, impidiendo la carga completa de algunos componentes.
+    </p>
+
+    <h3>El proceso de diagnóstico</h3>
+
+    <p>
+      En lugar de desactivar la política de seguridad, decidí revisar cada error individualmente para entender exactamente qué recurso estaba siendo bloqueado.
+    </p>
+
+    <p>
+      El proceso consistió en:
+    </p>
+
+    <ul>
+      <li>Revisar la consola del navegador.</li>
+      <li>Identificar el dominio bloqueado.</li>
+      <li>Determinar qué directiva de la CSP estaba provocando el rechazo.</li>
+      <li>Actualizar la configuración.</li>
+      <li>Volver a desplegar el proyecto.</li>
+      <li>Repetir el proceso hasta eliminar todos los errores.</li>
+    </ul>
+
+    <h3>Los bloqueos encontrados</h3>
+
+    <p>
+      Durante el análisis aparecieron distintos tipos de restricciones que afectaban el funcionamiento de AdSense.
+    </p>
+
+    <p>
+      <strong>Scripts:</strong> algunos archivos JavaScript utilizados por Google no estaban contemplados dentro de la directiva <code>script-src</code>.
+    </p>
+
+    <p>
+      <strong>Conexiones:</strong> ciertos servicios internos utilizados para validación y control de tráfico eran bloqueados por la directiva <code>connect-src</code>.
+    </p>
+
+    <p>
+      <strong>Iframes:</strong> varios componentes publicitarios requerían dominios adicionales dentro de <code>frame-src</code> para cargar correctamente.
+    </p>
+
+    <h3>Lo que aprendí</h3>
+
+    <p>
+      La principal conclusión fue que una CSP efectiva no se construye copiando configuraciones genéricas encontradas en Internet.
+    </p>
+
+    <p>
+      Cada proyecto utiliza servicios distintos y la política debe reflejar exactamente las dependencias reales de la aplicación.
+    </p>
+
+    <p>
+      También comprobé que una configuración demasiado restrictiva puede afectar funcionalidades legítimas, incluso cuando estas provienen de proveedores confiables como Google.
+    </p>
+
+    <h3>Resultado final</h3>
+
+    <p>
+      Después de varios ajustes logré mantener una política de seguridad activa sin afectar la monetización del sitio.
+    </p>
+
+    <ul>
+      <li>Google AdSense volvió a funcionar correctamente.</li>
+      <li>Desaparecieron los errores de consola.</li>
+      <li>La CSP continuó protegiendo el sitio.</li>
+      <li>Solo se habilitaron los dominios estrictamente necesarios para Analytics, Tag Manager y AdSense.</li>
+    </ul>
+
+    <p>
+      El resultado fue un equilibrio razonable entre seguridad, rendimiento y compatibilidad.
+    </p>
+
+    <h3>Conclusión</h3>
+
+    <p>
+      Muchas veces los errores de consola parecen simples advertencias, pero detrás de ellos puede haber funcionalidades completas que dejan de operar correctamente.
+    </p>
+
+    <p>
+      Resolver estos conflictos me permitió comprender mejor cómo interactúan las políticas de seguridad del navegador con servicios externos de monetización y análisis.
+    </p>
+
+    <p>
+      Más allá de solucionar un problema puntual, fue una experiencia útil para construir una configuración más sólida y mantenible para el proyecto.
+    </p>
+
+    <button class="collapse-btn" onclick="togglePost(this)">Cerrar ↑</button>
+  </div>
+</article>
+
+</div>
 
   <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Bs. As., Argentina </footer>
 
