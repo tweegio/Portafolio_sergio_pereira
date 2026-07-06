@@ -5,7 +5,7 @@
       --bg: #0a0a0a;
       --surface: #111111;
       --surface2: #1a1a1a;
-      --border: #2a2a2a;
+      --border: #07af23e5;
       --accent: #29ac18;
       --accent2: #47b8ff;
       --text: #f0f0f0;
@@ -167,7 +167,7 @@
     .screenshot-wrap img {
       width: 100%;
       border-radius: 6px;
-      border: 1px solid var(--border);
+      border: 3px solid var(--border);
       object-fit: contain;
       background: var(--surface);
       display: block;
