@@ -7,7 +7,7 @@
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRENW349P6"></script>
 
-
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,32 @@
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">SP.</a>
-    <a href="index.html" class="nav-back">← Volver al portafolio</a>
-  </nav>
+   <!-- NAVBAR FIJA -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <span class="nav-logo">SP<span class="dot">.</span></span>
+            <ul class="nav-links">
+                <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#educacion">Educación</a></li>
+                <li><a href="index.html#experiencia">Experiencia</a></li>
+                <li><a href="index.html#projects">Proyectos</a></li>
+                <li><a href="index.html#contact">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#skills">Skills</a>
+            <a href="#educacion">Educación</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </nav>
 
   <section class="blog-hero">
     <p class="label">// blog</p>
@@ -338,6 +360,7 @@
   <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Bs. As., Argentina </footer>
 
   <script src="js/blog.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/analitics.js"></script>
 </body>
 </html>
