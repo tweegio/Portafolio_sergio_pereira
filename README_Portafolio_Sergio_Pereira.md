@@ -22,7 +22,6 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 - **Navbar fija** con efecto blur al scrollear y link activo según sección visible
 - **Animaciones on scroll** con IntersectionObserver
 - **Menú hamburguesa** para dispositivos móviles
-- **Traducción ES / EN** con un botón, sin librerías externas
 - **Secciones:** Hero, Sobre mí, Skills, Educación & Certificaciones, Experiencia Laboral, Proyectos, Contacto
 
 ---
