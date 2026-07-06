@@ -11,8 +11,7 @@ Sitio web personal desarrollado para presentar mi perfil profesional como **Desa
 
 - HTML5 semántico
 - CSS3 — variables, animaciones, grid, flexbox, media queries
-- JavaScript vanilla — IntersectionObserver, navegación activa, menú mobile, sistema de traducción ES/EN
-- Bootstrap 5.3
+- JavaScript vanilla — IntersectionObserver, navegación activa, menú mobile
 - Google Fonts — Outfit + Josefin Sans
 
 ---
