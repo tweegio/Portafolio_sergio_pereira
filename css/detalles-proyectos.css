@@ -211,7 +211,7 @@
     }
 
     .readme-content p {
-      color: #bbb;
+      color: #ebeaea;
       font-size: 0.93rem;
       line-height: 1.8;
       margin-bottom: 1rem;
@@ -224,7 +224,7 @@
     }
 
     .readme-content li {
-      color: #bbb;
+      color: #fffdfd;
       font-size: 0.93rem;
       line-height: 1.8;
       margin-bottom: 0.3rem;
@@ -254,7 +254,7 @@
       border: none;
       padding: 0;
       font-size: 0.82rem;
-      color: #ccc;
+      color: #eeebeb;
     }
 
     .readme-content blockquote {
