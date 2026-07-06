@@ -9,7 +9,7 @@
       --accent: #29ac18;
       --accent2: #47b8ff;
       --text: #f0f0f0;
-      --text-muted: #888;
+      --text-muted: #ffffff;
       --font-display: 'Syne', sans-serif;
       --font-mono: 'Space Mono', monospace;
     }
@@ -18,6 +18,7 @@
 
     body {
       background: var(--bg);
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/drdzj9uyn/image/upload/q_auto/f_auto/v1775841992/fondo01_u0q8fm.jpg');
       color: var(--text);
       font-family: var(--font-display);
       min-height: 100vh;
