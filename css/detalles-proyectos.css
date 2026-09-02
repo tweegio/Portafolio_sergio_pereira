@@ -288,3 +288,81 @@
       font-size: 0.7rem;
       color: var(--text-muted);
     }
+
+    /* ========================================
+   RESULTADOS — MÉTRICAS REALES
+======================================== */
+.results-section {
+  margin: 2.5rem 0;
+}
+
+.results-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.results-table td.metric-up { color: var(--accent); font-weight: 700; }
+.results-table td.metric-down { color: #ff6b6b; font-weight: 700; }
+
+.insight-box {
+  background: var(--surface2);
+  border-left: 3px solid var(--accent2);
+  border-radius: 4px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.insight-box p {
+  font-size: 0.88rem;
+  color: #ddd;
+  margin-bottom: 0.6rem;
+}
+.insight-box p:last-child { margin-bottom: 0; }
+
+.insight-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.channel-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.channel-pills span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  background: var(--surface);
+}

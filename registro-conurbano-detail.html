@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro Conurbano — Sergio Pereira</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NRENW349P6"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/detalles-proyectos.css">
+
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Registro Conurbano
+    </div>
+
+    <h1>Registro Conurbano</h1>
+
+    <p class="subtitle">
+      Guía SEO no oficial para sacar o renovar la licencia de conducir en el
+      Gran Buenos Aires, con contenido por partido, simulador de examen
+      teórico y blog. Producto propio desarrollado bajo mi marca de
+      servicios, Service-Net Soluciones IT.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">SEO</span>
+      <span class="tag">Vercel</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://registro-conurbano.vercel.app/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="https://res.cloudinary.com/drdzj9uyn/image/upload/v1788363739/captura_registtro_conurbano_g829ut.png" alt="Screenshot de Registro Conurbano" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Contexto</h2>
+      <div class="context-block">
+        <p class="context-label">// producto propio · Service-Net Soluciones IT</p>
+        <p>
+          Registro Conurbano es uno de los productos propios que desarrollo
+          bajo mi marca de servicios IT. Nació para resolver un problema real
+          y muy buscado: la información sobre trámites de licencia de
+          conducir en el Gran Buenos Aires está dispersa y varía por
+          partido. El objetivo fue centralizarla en un sitio rápido,
+          gratuito y optimizado para posicionar orgánicamente en Google
+          por cada localidad.
+        </p>
+      </div>
+
+      <h2>El proyecto en números</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">40</div>
+          <div class="stat-label">Partidos cubiertos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100</div>
+          <div class="stat-label">Preguntas en el simulador</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$0</div>
+          <div class="stat-label">Costo por consulta</div>
+        </div>
+      </div>
+
+      <h2>Secciones del sitio</h2>
+      <div class="sections-grid">
+        <div class="section-item">
+          <p class="sec-title">Inicio</p>
+          <p>Buscador de partido + guía de 4 pasos para el trámite</p>
+        </div>
+        <div class="section-item">
+          <p class="sec-title">Partidos</p>
+          <p>40 páginas individuales con requisitos por localidad</p>
+        </div>
+        <div class="section-item">
+          <p class="sec-title">Simulador</p>
+          <p>100 preguntas del examen teórico, sin registro</p>
+        </div>
+        <div class="section-item">
+          <p class="sec-title">Mapa VTV</p>
+          <p>Ubicación de plantas de verificación técnica vehicular</p>
+        </div>
+        <div class="section-item">
+          <p class="sec-title">Tips & Blog</p>
+          <p>Artículos sobre el proceso y errores comunes</p>
+        </div>
+      </div>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>SEO programático por partido</h3>
+      <p>
+        En lugar de una sola página genérica, el sitio genera una página
+        individual por cada uno de los 40 partidos del Conurbano
+        (<code>/localidades/lomas-de-zamora.html</code>, etc.). Esto permite
+        posicionar orgánicamente para búsquedas hiperlocales como "licencia
+        de conducir Quilmes" o "renovar registro La Matanza", en lugar de
+        competir solo por términos genéricos de alta competencia.
+      </p>
+
+      <h3>Metadata completa para redes y buscadores</h3>
+      <p>
+        Cada página incluye <code>canonical</code>, Open Graph y Twitter
+        Cards con imagen propia, además de <code>robots</code> configurado
+        con <code>max-image-preview:large</code> y <code>max-snippet:-1</code>
+        para maximizar cómo Google muestra el contenido en resultados.
+      </p>
+
+      <h3>Simulador interactivo como imán de tráfico</h3>
+      <p>
+        El simulador de examen teórico no es solo una funcionalidad
+        adicional: es una pieza clave de la estrategia de contenido, ya que
+        genera una razón para que el usuario vuelva al sitio antes de
+        rendir el examen real, además de posicionar para búsquedas como
+        "simulador examen teórico conducir".
+      </p>
+
+      <h3>Asistente conversacional en la home</h3>
+      <p>
+        Un bot de ayuda guía al visitante hacia la sección correcta según
+        su consulta, reduciendo la fricción de navegar 40 páginas de
+        contenido para encontrar la información específica de su partido.
+      </p>
+
+      <h2>Estado actual</h2>
+      <p>
+        El sitio fue desplegado recientemente y se encuentra en proceso de
+        indexación en Google. Ya está conectado a Google Search Console
+        para monitorear su evolución — el mismo proceso de seguimiento
+        aplicado en <a href="inmobiliarias-detail.html">Inmobiliarias Zona
+        Sur GBA</a>, donde la indexación pasó de 25 a 72 páginas en dos
+        meses. La expectativa es replicar ese crecimiento a medida que
+        Google rastrea las 40 páginas de partidos.
+      </p>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Bs. As., Argentina</footer>
+  <script src="js/analitics.js"></script>
+</body>
+</html>
