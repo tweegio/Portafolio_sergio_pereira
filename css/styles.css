@@ -726,7 +726,11 @@ body > * { position: relative; z-index: 1; }
 
 /* ── BLOG PREVIEW ── */
 .blog-preview {
-  padding: 80px 0;
+   padding: 1.2rem 1.4rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
 }
 
 .blog-intro {

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoticiasVirales — Sergio Pereira</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NRENW349P6"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/detalles-proyectos.css">
+
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      NoticiasVirales
+    </div>
+
+    <h1>NoticiasVirales</h1>
+
+    <p class="subtitle">
+      Portal de noticias virales y tendencias con generador estático propio:
+      sin CMS, sin base de datos y sin frameworks, pero con sitemap,
+      robots.txt y buscador generados automáticamente en cada build.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">SEO</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://www.noticiasvirales.com.ar/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="https://res.cloudinary.com/drdzj9uyn/image/upload/v1789738146/captura_noticias_virales_zwrt3m.webp" alt="Screenshot de NoticiasVirales" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Contexto</h2>
+      <div class="context-block">
+        <p class="context-label">// producto propio · Service-Net Soluciones IT</p>
+        <p>
+          NoticiasVirales es un portal de noticias y tendencias pensado para
+          ser administrado por una sola persona, sin depender de un CMS. El
+          objetivo fue construir un generador estático propio que resolviera
+          publicación de contenido, SEO y estructura de sitio como un único
+          flujo automatizado, en lugar de armar todo a mano en cada
+          publicación.
+        </p>
+      </div>
+
+      <h2>Cómo funciona</h2>
+      <p>
+        Todo el contenido vive en un único archivo (<code>data/articles.js</code>),
+        donde cada noticia es un objeto con título, categoría, fecha, imagen,
+        contenido y tags. Un generador estático propio en Node
+        (<code>build/build.js</code>), sin dependencias externas, lee ese
+        archivo y produce el sitio completo: home, páginas de categoría,
+        artículos individuales, tags, <code>sitemap.xml</code>,
+        <code>robots.txt</code> y los datos del buscador.
+      </p>
+      <p>
+        Publicar una noticia es agregar un objeto al array de datos y correr
+        <code>npm run build</code>: la noticia aparece automáticamente en la
+        home, su categoría, sus tags y como "relacionada" donde corresponda,
+        sin tocar ningún otro archivo a mano.
+      </p>
+
+      <h2>Estructura del proyecto</h2>
+      <pre><code>config/config.js        ← configuración central (nombre, redes, categorías)
+data/articles.js        ← base de datos de noticias (editable a mano)
+build/build.js          ← generador estático principal
+build/templates.js      ← componentes HTML reutilizables
+build/utils.js          ← helpers (fechas, slugs, relacionadas)
+build/static-pages.js   ← contenido de contacto/privacidad/términos
+build/generate-images.js← genera imágenes placeholder demo
+
+css/  → style.css, header.css, home.css, article.css, responsive.css
+js/   → main.js (UI), search.js (buscador), articles-data.js (autogenerado)
+
+index.html, categorias/, articulo/, tag/, autor/,
+sitemap.xml, robots.txt   ← salida generada por build.js</code></pre>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>Generador estático propio, sin frameworks</h3>
+      <p>
+        En lugar de usar un generador de sitios existente (Eleventy, Astro,
+        etc.), construí el propio en Node puro. Esto significa control total
+        sobre qué HTML se genera y cómo, sin curva de aprendizaje de un
+        framework de terceros ni dependencias que mantener actualizadas.
+      </p>
+
+      <h3>Una sola fuente de datos</h3>
+      <p>
+        <code>data/articles.js</code> es la única fuente de verdad. El build
+        deriva de ahí absolutamente todo — páginas de categoría, tags,
+        noticias relacionadas y sitemap — eliminando el riesgo de
+        inconsistencias entre secciones que aparece cuando el contenido se
+        edita a mano en múltiples archivos.
+      </p>
+
+      <h3>SEO generado automáticamente en cada build</h3>
+      <p>
+        <code>sitemap.xml</code> y <code>robots.txt</code> no se escriben a
+        mano: se regeneran en cada <code>npm run build</code> a partir del
+        contenido real publicado, así el sitemap nunca queda desactualizado
+        respecto a lo que existe en el sitio.
+      </p>
+
+      <h3>Arquitectura preparada para automatización futura</h3>
+      <p>
+        Aunque hoy la carga de noticias es 100% manual por decisión propia,
+        <code>data/articles.js</code> está diseñado para poder alimentarse
+        desde un script que consuma Google Trends, RSS o una API externa,
+        siempre que genere objetos con la misma forma. Ese script podría
+        correr en GitHub Actions y hacer commit del build automáticamente —
+        la arquitectura ya lo permite sin rediseñar nada.
+      </p>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Bs. As., Argentina</footer>
+  <script src="js/analitics.js"></script>
+</body>
+</html>
