@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía Felina — Sergio Pereira</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NRENW349P6"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/detalles-proyectos.css">
+
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SP.</a>
+    <a href="index.html#projects" class="nav-back">← Proyectos</a>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="index.html#projects">Proyectos</a>
+      <span>/</span>
+      Guía Felina
+    </div>
+
+    <h1>Guía Felina</h1>
+
+    <p class="subtitle">
+      Portal de contenido sobre gatos con arquitectura por silos temáticos:
+      77 páginas, 8 herramientas interactivas y Schema.org en cada artículo.
+      HTML/CSS/JS puro, sin build ni frameworks.
+    </p>
+
+    <div class="tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Schema.org</span>
+      <span class="tag">SEO</span>
+      <span class="tag">Vercel</span>
+    </div>
+
+    <div class="action-links">
+      <a href="https://www.guiafelina.com.ar/" target="_blank" class="btn-primary">Ver proyecto ↗</a>
+    </div>
+  </header>
+
+  <div class="screenshot-wrap">
+    <img src="https://res.cloudinary.com/drdzj9uyn/image/upload/v1789737080/captura_guia_felina_mpwale.png" alt="Screenshot de Guía Felina" />
+  </div>
+
+  <main class="readme-wrap">
+    <p class="section-label">// detalles del proyecto</p>
+
+    <div class="readme-content">
+
+      <h2>Contexto</h2>
+      <div class="context-block">
+        <p class="context-label">// producto propio · Service-Net Soluciones IT</p>
+        <p>
+          Guía Felina es un portal de contenido sobre gatos organizado por
+          silos temáticos (razas, salud, alimentación, cuidados,
+          comportamiento, adopción). El objetivo fue construir un sitio de
+          contenido a escala — 77 páginas y creciendo — con SEO técnico
+          consistente en cada una, sin depender de un CMS ni de un backend.
+        </p>
+      </div>
+
+      <h2>El proyecto en números</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">77</div>
+          <div class="stat-label">Páginas publicadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Herramientas interactivas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Silos temáticos</div>
+        </div>
+      </div>
+
+      <h2>Arquitectura por silos</h2>
+      <p>
+        El contenido se organiza en silos temáticos independientes (razas,
+        salud, alimentación, cuidados, comportamiento, gatitos, gatos
+        senior, adopción, productos, blog), cada uno con su propia página
+        pilar, subcarpetas de contenido y su propio <code>sitemap-&lt;silo&gt;.xml</code>.
+        Esta estructura refuerza la relevancia temática de cada sección para
+        los buscadores y facilita escalar contenido nuevo sin reorganizar
+        el sitio.
+      </p>
+
+      <h2>Herramientas interactivas</h2>
+      <p>
+        Además del contenido editorial, el sitio incluye 8 herramientas
+        propias (comparador de razas, test de raza ideal, generador de
+        nombres, buscador interno, entre otras), cada una implementada como
+        un módulo JS independiente dentro de <code>assets/js/tools/</code>.
+        El comparador y el test de raza ideal leen directamente de
+        <code>assets/data/razas.json</code>, así que sumar una raza nueva no
+        requiere tocar código de las herramientas.
+      </p>
+
+      <h2>Decisiones técnicas</h2>
+
+      <h3>Rutas absolutas desde la raíz</h3>
+      <p>
+        Todas las rutas del sitio (<code>/assets/css/tokens.css</code>,
+        <code>/razas/</code>) son absolutas, nunca relativas. Esto permite
+        copiar cualquier página a cualquier profundidad de carpetas nuevas
+        sin que se rompa ningún enlace ni recurso — una decisión pensada
+        para minimizar errores en un sitio que crece constantemente en
+        cantidad de páginas.
+      </p>
+
+      <h3>Schema.org en cada página nueva</h3>
+      <p>
+        Cada página incluye bloques <code>application/ld+json</code> con al
+        menos Breadcrumb y Article, validados contra
+        <code>validator.schema.org</code> antes de publicar. Esto refuerza
+        cómo Google interpreta y muestra cada contenido en resultados de
+        búsqueda.
+      </p>
+
+      <h3>Política editorial explícita para contenido de salud</h3>
+      <p>
+        Todo artículo de la sección de salud incluye una nota editorial
+        estándar ("Equipo Editorial Guía Felina — Contenido elaborado a
+        partir de fuentes veterinarias públicas"), salvo que exista revisión
+        de un veterinario real. La regla es explícita: nunca inventar un
+        revisor. El mismo criterio de verificación aplica a la sección
+        "Gatos de Artistas", donde todo dato sobre personas reales debe
+        salir de fuentes públicas verificables.
+      </p>
+
+      <h3>De un build en Python a HTML plano — una decisión consciente</h3>
+      <p>
+        El sitio se construyó originalmente con un generador propio en
+        Python para acelerar la creación de las primeras ~75 páginas de
+        forma consistente. Más adelante se simplificó a la estructura
+        actual, 100% manual y sin build, priorizando que cualquier persona
+        pudiera mantener el sitio con solo un editor de texto — el
+        resultado es funcionalmente idéntico (mismo diseño, mismo SEO,
+        mismas herramientas), solo cambió cómo se genera el código. El
+        trade-off asumido: el header y footer están repetidos en las 77
+        páginas y un cambio de navegación requiere buscar y reemplazar en
+        todo el proyecto en lugar de editar un solo archivo — una
+        desventaja razonable para el tamaño actual del sitio, resuelta con
+        una checklist propia antes de dar por terminada cada página nueva.
+      </p>
+
+      <h2>Estructura del proyecto</h2>
+      <pre><code>guia-felina/
+├── index.html · 404.html
+├── razas/            ← pilar + fichas de raza + comparador
+├── salud/, alimentacion/, cuidados/, comportamiento/,
+│   gatitos/, gatos-senior/, adopcion/, productos/, blog/
+├── herramientas/, buscar/, sobre-nosotros/, contacto/
+├── assets/
+│   ├── css/          ← tokens.css, base.css, layout.css, components.css
+│   ├── js/           ← main.js, components/search.js, tools/
+│   └── data/         ← razas.json, nombres-gatos.json, search-index.json
+├── robots.txt · manifest.json · vercel.json
+└── sitemap-index.xml + sitemap-&lt;silo&gt;.xml (uno por silo)</code></pre>
+
+    </div>
+  </main>
+
+  <footer>© Sergio Pereira 2026 — Hecho con 💻 desde Bs. As., Argentina</footer>
+  <script src="js/analitics.js"></script>
+</body>
+</html>

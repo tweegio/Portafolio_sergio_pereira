@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tweegio.github.io/Portafolio_sergio_pereira/sitemap.xml

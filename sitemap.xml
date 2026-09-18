@@ -22,13 +22,6 @@
   </url>
 
   <url>
-    <loc>https://tweegio.github.io/Portafolio_sergio_pereira/app-veterinaria-detail.html</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://tweegio.github.io/Portafolio_sergio_pereira/cvfilter-detail.html</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -42,13 +35,6 @@
     <priority>0.8</priority>
   </url>
 
-    <url>
-    <loc>https://tweegio.github.io/Portafolio_sergio_pereira/qr-generator-detail.html</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
    <url>
     <loc>https://tweegio.github.io/Portafolio_sergio_pereira/cafe-aurora-detail.html</loc>
     <lastmod>2026-03-01</lastmod>
@@ -56,12 +42,6 @@
     <priority>0.8</priority>
   </url>
 
-     <url>
-    <loc>https://tweegio.github.io/Portafolio_sergio_pereira/bot-detect-detail.html</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
    <url>
     <loc>https://tweegio.github.io/Portafolio_sergio_pereira/service-net-detail.html</loc>
@@ -91,6 +71,20 @@
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://tweegio.github.io/Portafolio_sergio_pereira/noticiasvirales-detail.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tweegio.github.io/Portafolio_sergio_pereira/guia-felina-detail.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   </urlset>
